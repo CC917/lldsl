@@ -41,7 +41,7 @@ private:
 public:
 	int run() override
 	{
-		auto& ll = scan_stage("test.pl");
+		auto& ll = scan_stage("test.pdsl");
 		//std::cout << ll.get_token_list().size() << "??" << std::endl;
 		parser_stage(ll);
 
