@@ -1,11 +1,16 @@
 
-# copoy file -> directory
+declr={
+    1 = ./v2x-example
+    2 = "${PWD}"/cv2x-example
+}
 
-1 -> 2
+target mypackage = { bin lib docs }
 
+# copoy file
+1 -> bin
 v2xmode -> bin
 
-# move file -> directory
+# move file
+3 => lib
 
-
-3 => 4
+pak(tar.bz)

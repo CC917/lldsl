@@ -3,6 +3,7 @@
 #include "app.h"
 #include "parser.h"
 #include "emit.h"
+#include "spdlog/spdlog.h"
 
 #include <iostream>
 
@@ -20,7 +21,6 @@ private:
 		static lex lx(reader);
 
 		lx.do_lex();
-		//std::cout << lx.get_token_list().size() << std::endl;
 		lx.dump_token();
 
 		return lx;
@@ -42,17 +42,15 @@ public:
 	int run() override
 	{
 		auto& ll = scan_stage("test.pdsl");
-		//std::cout << ll.get_token_list().size() << "??" << std::endl;
 		parser_stage(ll);
-
 		emit_stage();
-
 		return 0;
 	}
 };
 
 int main()
 {
+    spdlog::info("This is dsl for {}!","package");
 	compiler *c = new compilerImpl();
 	return c->run();
 }

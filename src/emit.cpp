@@ -1,6 +1,7 @@
 #include "emit.h"
 
 #include "AST.h"
+#include "spdlog/spdlog.h"
 
 #define ERR fprintf(stderr,"emit error\n")
 
@@ -19,11 +20,11 @@ void emit_code()
 	fputs("function __copy_fun()\n{\n", fp);
 
 	for (int i = 0; i < tree_list::index; i++) {
-		std::cout << "start emit code\n";
+		spdlog::info("start emit code\n");
 		
 		node* p = tree_list::_node[i];
 
-		std::cout << static_cast<int>(p->type);
+		//std::cout << static_cast<int>(p->type);
 
 		if (p->type == node::node_type::op_cp) {
 			sprintf(buffer, "\tcp ${%s}", p->kid1->var_name.c_str());
